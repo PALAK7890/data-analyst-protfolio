@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palak Portfolio</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-left {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.nav-right a {
+    margin-left: 16px;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.nav-right a:hover {
+    color: #2563eb;
+}
+
+.sidebar {
+    flex: 0 0 300px;
+    background: linear-gradient(180deg, #1f2937, #111827);
+    color: #f9fafb;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #374151;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.role {
+    color: #9ca3af;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.bio {
+    font-size: 13px;
+    margin: 12px 0;
+    color: #d1d5db;
+}
+
+.info {
+    text-align: left;
+    font-size: 13px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.info i {
+    margin-right: 8px;
+    color: #60a5fa;
+}
+
+.info a {
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.info a:hover {
+    text-decoration: underline;
+}
+
+.skills {
+    margin-top: 15px;
+}
+
+.skill {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.skill:hover,
+.skill.active {
+    background: #2563eb;
+    color: white;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    min-width: 300px;
+}
+
+.title {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border: 1px solid #2563eb;
+    box-shadow: 0 15px 40px rgba(37,99,235,0.25);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.card-body {
+    padding: 16px;
+}
+
+.card-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.card-desc {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.card-tags span {
+    display: inline-block;
+    background: #eef2ff;
+    color: #3730a3;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin: 3px 3px 0 0;
+}
+
+.github-btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    background: #24292f;
+    color: white;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    z-index: 200;
+}
+
+.modal img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.footer {
+    text-align: center;
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #ddd;
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 30px 20px;
+        box-shadow: none;
+    }
+
+    .content {
+        padding: 15px 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-right {
+        margin-top: 8px;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .card img {
+        height: 150px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="nav-left">Palak | Portfolio</div>
+    <div class="nav-right">
+        <a href="#">Projects</a>
+        <a href="https://www.linkedin.com/in/palak-b2a36b324/" target="_blank">LinkedIn</a>
+        <a href="https://www.kaggle.com/palakdahiya" target="_blank">Kaggle</a>
+        <a href="mailto:dahiyapalak7@gmail.com">Contact</a>
+    </div>
+</div>
+
+<div class="container">
+
+<div class="sidebar">
+    <img src="photo1.jpeg" class="profile-img">
+    <div class="name">Palak</div>
+    <div class="role">Data Analyst</div>
+    <div class="bio">Data Analyst skilled in SQL, Python, Tableau, and business analytics.</div>
+
+    <div class="info">
+        <div><i class="fas fa-map-marker-alt"></i> Sonipat, Haryana</div>
+        <div><i class="fas fa-envelope"></i> dahiyapalak7@gmail.com</div>
+        <div><i class="fab fa-linkedin"></i> 
+            <a href="https://www.linkedin.com/in/palak-b2a36b324/" target="_blank">LinkedIn</a>
+        </div>
+        <div><i class="fab fa-kaggle"></i> 
+            <a href="https://www.kaggle.com/palakdahiya" target="_blank">Kaggle</a>
+        </div>
+        
+    </div>
+
+    <div class="skills">
+        <div class="skill active" onclick="filterProjects('all', this)">All</div>
+        <div class="skill" onclick="filterProjects('SQL', this)">SQL</div>
+        <div class="skill" onclick="filterProjects('Tableau', this)">Tableau</div>
+        <div class="skill" onclick="filterProjects('Python', this)">Python</div>
+        <div class="skill" onclick="filterProjects('Excel', this)">Excel</div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="title">Projects</div>
+
+    <div class="projects">
+
+        <div class="card" data-tech="Tableau Python" onclick="openModal(this)">
+            <img src="credit_fraud_dashboard.png">
+            <div class="card-body">
+                <div class="card-title">Credit Fraud Detection Dashboard</div>
+                <div class="card-desc">
+                    Developed an interactive Tableau dashboard to identify fraudulent transactions using KPIs such as fraud rate, transaction volume, and anomaly patterns.
+                </div>
+                <div class="card-tags">
+                    <span>Tableau</span>
+                    <span>Python</span>
+                    <span>Fraud Analysis</span>
+                    <span>KPI Dashboard</span>
+                </div>
+                <a href="https://github.com/PALAK7890/credit_card_fraud_detection" onclick="event.stopPropagation()" class="github-btn">View Code</a>
+            </div>
+        </div>
+
+        <div class="card" data-tech="SQL Tableau Python" onclick="openModal(this)">
+            <img src="Dashboard 2.png">
+            <div class="card-body">
+                <div class="card-title">Indian Crime Data Analysis</div>
+                <div class="card-desc">
+                    Performed SQL-based analysis on crime datasets and visualized trends across states, crime types, and time periods using Tableau dashboards.
+                </div>
+                <div class="card-tags">
+                    <span>SQL</span>
+                    <span>Tableau</span>
+                    <span>Python</span>
+                    <span>Data Analysis</span>
+                </div>
+                <a href="https://github.com/PALAK7890/Indian_Crime" onclick="event.stopPropagation()" class="github-btn">View Code</a>
+            </div>
+        </div>
+
+        <div class="card" data-tech="Excel" onclick="openModal(this)">
+            <img src="sheet.png">
+            <div class="card-body">
+                <div class="card-title">Developer Compensation Analysis</div>
+                <div class="card-desc">
+                    Built an Excel dashboard analyzing salary trends, experience levels, and job satisfaction using Pivot Tables, charts, and automated calculations.
+                </div>
+                <div class="card-tags">
+                    <span>Group Project</span>
+                    <span>Excel</span>
+                    <span>Dashboard</span>
+                    <span>Data Analysis</span>
+                </div>
+                <a href="https://github.com/adithyanst/SectionA_Group19_DevComp_and_JobSatisfaction" onclick="event.stopPropagation()" class="github-btn">View Code</a>
+            </div>
+        </div>
+
+        <div class="card" data-tech="Tableau Python Excel" onclick="openModal(this)">
+            <img src="Dashboard 1.png">
+            <div class="card-body">
+                <div class="card-title">Engineering College Placement Analysis</div>
+                <div class="card-desc">
+                    Analyzed placement data to uncover trends in recruiters, college tiers, salary outcomes, and student performance using Python, Excel, and Tableau.
+                </div>
+                <div class="card-tags">
+                    <span>Tableau</span>
+                    <span>Python</span>
+                    <span>Excel</span>
+                    <span>EDA</span>
+                </div>
+                <a href="https://github.com/PALAK7890/college-placements" onclick="event.stopPropagation()" class="github-btn">View Code</a>
+            </div>
+        </div>
+
+        <div class="card" data-tech="Python Tableau" onclick="openModal(this)">
+            <img src="ab_testing.png">
+            <div class="card-body">
+                <div class="card-title">Marketing A/B Testing, ROI & Budget Optimization</div>
+                <div class="card-desc">
+                    Conducted A/B testing using z-test, confidence intervals, and effect size analysis. Built ROI dashboards and a ₹50,000 budget optimization strategy to support marketing decisions.
+                </div>
+                <div class="card-tags">
+                    <span>Python</span>
+                    <span>Tableau</span>
+                    <span>A/B Testing</span>
+                    <span>ROI Analysis</span>
+                </div>
+                <a href="https://github.com/PALAK7890/ab_testing" onclick="event.stopPropagation()" class="github-btn">View Code</a>
+            </div>
+        </div>
+
+        <div class="card" data-tech="Python Tableau" onclick="openModal(this)">
+            <img src="time_value.png">
+            <div class="card-body">
+                <div class="card-title">Time Value Analysis</div>
+                <div class="card-desc">
+                    Analyzed the concept of time value through data-driven techniques, exploring how value changes over time using statistical analysis and visualization. Built interactive dashboards to interpret trends and support analytical decision-making.
+                </div>
+        
+                <div class="card-tags">
+                    <span>Python</span>
+                    <span>Tableau</span>
+                    <span>EDA</span>
+                    <span>Data Analysis</span>
+                </div>
+        
+                <a href="https://github.com/PALAK7890/Time_value" onclick="event.stopPropagation()" class="github-btn">View Code</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<div class="modal" id="modal" onclick="closeModal()">
+    <img id="modal-img">
+</div>
+
+<div class="footer">
+    © 2026 Palak | Data Analyst Portfolio
+</div>
+
+<script>
+function openModal(card) {
+    document.getElementById("modal-img").src = card.querySelector("img").src;
+    document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+function filterProjects(skill, element) {
+    const cards = document.querySelectorAll(".card");
+    const filters = document.querySelectorAll(".filter");
+
+    filters.forEach(btn => btn.classList.remove("active"));
+    element.classList.add("active");
+
+    cards.forEach(card => {
+        const tech = card.getAttribute("data-tech");
+
+        if (skill === "all" || tech.includes(skill)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
