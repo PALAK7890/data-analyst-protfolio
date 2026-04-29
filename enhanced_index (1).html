@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Palak - Data Analyst portfolio featuring analytics, Tableau dashboards, SQL, Python, Excel, and machine learning projects." />
+    <title>Palak | Data Analyst Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --bg: #f4f7fb;
+            --surface: #ffffff;
+            --surface-soft: #eef5ff;
+            --text: #111827;
+            --muted: #5f6b7a;
+            --line: #dce5f2;
+            --primary: #0a66c2;
+            --primary-dark: #004182;
+            --primary-soft: #e8f3ff;
+            --accent: #22c55e;
+            --warning: #f59e0b;
+            --shadow: 0 20px 55px rgba(15, 23, 42, 0.10);
+            --radius-xl: 26px;
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --max-width: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(10, 102, 194, 0.12), transparent 30%),
+                linear-gradient(180deg, #f7fbff 0%, #f4f7fb 48%, #eef3f9 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(220, 229, 242, 0.9);
+        }
+
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 14px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--primary), #60a5fa);
+            color: white;
+            box-shadow: 0 12px 28px rgba(10, 102, 194, 0.25);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-links a {
+            transition: 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: var(--primary);
+            color: white !important;
+            box-shadow: 0 12px 28px rgba(10, 102, 194, 0.22);
+        }
+
+        .page {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 34px 22px 70px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.35fr 0.65fr;
+            gap: 24px;
+            align-items: stretch;
+            margin-top: 10px;
+        }
+
+        .hero-main,
+        .profile-card,
+        .section,
+        .project-card,
+        .metric-card,
+        .timeline-card,
+        .contact-card {
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(220, 229, 242, 0.95);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-main {
+            padding: 42px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-main::after {
+            content: "";
+            position: absolute;
+            right: -90px;
+            top: -90px;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: rgba(10, 102, 194, 0.10);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 0.98;
+            letter-spacing: -0.07em;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            max-width: 720px;
+            color: var(--muted);
+            font-size: 18px;
+            margin-bottom: 26px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 12px 16px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 14px;
+            border: 1px solid transparent;
+            transition: 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 14px 30px rgba(10, 102, 194, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: white;
+            border-color: var(--line);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hero-tags span,
+        .tag {
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: #f1f6fd;
+            border: 1px solid #dce9f8;
+            color: #23415f;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .profile-card {
+            padding: 28px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.16);
+        }
+
+        .profile-card h2 {
+            font-size: 24px;
+            letter-spacing: -0.03em;
+        }
+
+        .profile-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .profile-info {
+            margin-top: 18px;
+            text-align: left;
+            display: grid;
+            gap: 10px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .profile-info div,
+        .profile-info a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-info i {
+            color: var(--primary);
+            width: 18px;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 22px 0;
+        }
+
+        .metric-card {
+            padding: 22px;
+        }
+
+        .metric-card strong {
+            display: block;
+            font-size: 28px;
+            letter-spacing: -0.04em;
+            color: var(--primary-dark);
+            line-height: 1;
+        }
+
+        .metric-card span {
+            display: block;
+            margin-top: 7px;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .section {
+            padding: 30px;
+            margin-top: 22px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .section-kicker {
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.11em;
+            margin-bottom: 4px;
+        }
+
+        .section h2 {
+            font-size: clamp(25px, 3vw, 36px);
+            letter-spacing: -0.05em;
+        }
+
+        .section-desc {
+            color: var(--muted);
+            max-width: 720px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 22px;
+        }
+
+        .about-copy p {
+            color: #374151;
+            margin-bottom: 14px;
+        }
+
+        .highlight-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px;
+            border-radius: var(--radius-md);
+            background: #f7fbff;
+            border: 1px solid #e1ecf8;
+        }
+
+        .highlight-item i {
+            color: var(--accent);
+            margin-top: 4px;
+        }
+
+        .skill-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .filter-btn {
+            border: 1px solid var(--line);
+            background: white;
+            color: #334155;
+            padding: 9px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 10px 24px rgba(10, 102, 194, 0.22);
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .project-card {
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            transition: 0.24s ease;
+            box-shadow: 0 14px 32px rgba(15, 23, 42, 0.07);
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(10, 102, 194, 0.35);
+            box-shadow: 0 22px 55px rgba(10, 102, 194, 0.16);
+        }
+
+        .project-img-wrap {
+            height: 185px;
+            background: linear-gradient(135deg, #dbeafe, #f8fafc);
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.35s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-body {
+            padding: 18px;
+        }
+
+        .project-body h3 {
+            font-size: 17px;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .project-body p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .impact-list {
+            display: grid;
+            gap: 7px;
+            margin: 12px 0;
+            list-style: none;
+            color: #334155;
+            font-size: 13px;
+        }
+
+        .impact-list li {
+            display: flex;
+            gap: 8px;
+        }
+
+        .impact-list li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 14px 0;
+        }
+
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .mini-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 11px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 800;
+            border: 1px solid var(--line);
+            background: #f8fbff;
+            transition: 0.2s ease;
+        }
+
+        .mini-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+        }
+
+        .skill-box {
+            background: #f8fbff;
+            border: 1px solid #e1ecf8;
+            border-radius: var(--radius-lg);
+            padding: 18px;
+        }
+
+        .skill-box h3 {
+            font-size: 15px;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .skill-box p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 14px;
+        }
+
+        .timeline-card {
+            padding: 18px;
+            border-radius: var(--radius-lg);
+            box-shadow: none;
+        }
+
+        .timeline-card .topline {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .timeline-card h3 {
+            font-size: 17px;
+        }
+
+        .timeline-card .date {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        .timeline-card p,
+        .timeline-card li {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .timeline-card ul {
+            padding-left: 18px;
+            margin-top: 8px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .contact-card {
+            padding: 18px;
+            border-radius: var(--radius-lg);
+            box-shadow: none;
+            transition: 0.2s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+
+        .contact-card i {
+            color: var(--primary);
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .contact-card strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .contact-card span {
+            display: block;
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 2px;
+            word-break: break-word;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.82);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 22px;
+            z-index: 3000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal img {
+            max-width: min(100%, 1100px);
+            max-height: 86vh;
+            border-radius: 18px;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.45);
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 18px;
+            right: 20px;
+            color: white;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+            padding: 28px 20px 0;
+        }
+
+        @media (max-width: 1050px) {
+            .hero,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skills-grid,
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 720px) {
+            .nav-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 4px;
+            }
+
+            .hero-main,
+            .profile-card,
+            .section {
+                padding: 22px;
+                border-radius: 20px;
+            }
+
+            .projects,
+            .skills-grid,
+            .contact-grid,
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+            .section-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="#top" aria-label="Palak Portfolio Home">
+                <span class="brand-mark">P</span>
+                <span>Palak</span>
+            </a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact" class="nav-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page" id="top">
+        <section class="hero" aria-label="Hero section">
+            <div class="hero-main">
+                <div class="eyebrow"><i class="fa-solid fa-chart-line"></i> Data Analyst Portfolio</div>
+                <h1>Turning messy data into <span>business decisions.</span></h1>
+                <p class="hero-subtitle">
+                    I’m Palak, a Data Analyst and Data Science student building portfolio-ready analytics projects using Python, SQL, Excel, Tableau, statistics, and storytelling dashboards.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-briefcase"></i> View Projects</a>
+                    <a href="mailto:dahiyapalak7@gmail.com" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Hire Me</a>
+                    <a href="https://www.linkedin.com/in/palak-b2a36b324/" target="_blank" class="btn btn-outline" rel="noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://www.kaggle.com/palakdahiya" target="_blank" class="btn btn-outline" rel="noreferrer"><i class="fab fa-kaggle"></i> Kaggle</a>
+                </div>
+                <div class="hero-tags" aria-label="Core strengths">
+                    <span>SQL Analysis</span>
+                    <span>Tableau Dashboards</span>
+                    <span>Python EDA</span>
+                    <span>A/B Testing</span>
+                    <span>Business Insights</span>
+                </div>
+            </div>
+
+            <aside class="profile-card" aria-label="Profile card">
+                <img src="photo1.jpeg" alt="Palak profile photo" class="profile-img" />
+                <h2>Palak</h2>
+                <p>Data Analyst • Data Science Student</p>
+                <div class="profile-info">
+                    <div><i class="fas fa-map-marker-alt"></i> Sonipat, Haryana</div>
+                    <a href="mailto:dahiyapalak7@gmail.com"><i class="fas fa-envelope"></i> dahiyapalak7@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/palak-b2a36b324/" target="_blank" rel="noreferrer"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+                    <a href="https://www.kaggle.com/palakdahiya" target="_blank" rel="noreferrer"><i class="fab fa-kaggle"></i> Kaggle Profile</a>
+                </div>
+            </aside>
+        </section>
+
+        <section class="metrics" aria-label="Portfolio highlights">
+            <div class="metric-card">
+                <strong>6+</strong>
+                <span>Analytics Projects</span>
+            </div>
+            <div class="metric-card">
+                <strong>4</strong>
+                <span>Dashboard Tools & Libraries</span>
+            </div>
+            <div class="metric-card">
+                <strong>360°</strong>
+                <span>EDA to Insight Workflow</span>
+            </div>
+            <div class="metric-card">
+                <strong>100%</strong>
+                <span>Recruiter-Focused Case Studies</span>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="section-header">
+                <div>
+                    <div class="section-kicker">About</div>
+                    <h2>Resume-style profile</h2>
+                </div>
+            </div>
+            <div class="about-grid">
+                <div class="about-copy">
+                    <p>
+                        I enjoy solving business problems by cleaning raw data, finding patterns, building dashboards, and converting analysis into simple, useful recommendations. My work combines technical execution with storytelling so that insights are easy for non-technical teams to understand.
+                    </p>
+                    <p>
+                        My portfolio includes projects in fraud detection, crime analytics, developer compensation, placement analysis, marketing A/B testing, ROI analysis, and time-value analysis. I focus on practical outcomes: KPIs, trends, segmentation, risk signals, and clear actions.
+                    </p>
+                </div>
+                <div class="highlight-list">
+                    <div class="highlight-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div><strong>Analytical foundation</strong><br />EDA, hypothesis testing, KPIs, statistical thinking, and dashboard storytelling.</div>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div><strong>Business-first mindset</strong><br />Projects are framed around decisions, growth, risk reduction, and operational improvement.</div>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div><strong>Hands-on tool stack</strong><br />Python, SQL, Excel, Tableau, GitHub, Kaggle, and data visualization workflows.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="projects">
+            <div class="section-header">
+                <div>
+                    <div class="section-kicker">Selected Work</div>
+                    <h2>Projects with business impact</h2>
+                    <p class="section-desc">Filter by tech stack and click any image to preview the dashboard/project visual.</p>
+                </div>
+            </div>
+
+            <div class="skill-filters" aria-label="Project filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="SQL">SQL</button>
+                <button class="filter-btn" data-filter="Tableau">Tableau</button>
+                <button class="filter-btn" data-filter="Python">Python</button>
+                <button class="filter-btn" data-filter="Excel">Excel</button>
+            </div>
+
+            <div class="projects">
+                <article class="project-card" data-tech="Tableau Python">
+                    <div class="project-img-wrap" onclick="openModal('credit_fraud_dashboard.png')">
+                        <img src="credit_fraud_dashboard.png" alt="Credit Fraud Detection Dashboard" />
+                    </div>
+                    <div class="project-body">
+                        <h3>Credit Fraud Detection Dashboard</h3>
+                        <p>Interactive fraud analytics dashboard focused on transaction risk, fraud rate, volume, and anomaly patterns.</p>
+                        <ul class="impact-list">
+                            <li>Designed fraud KPIs for fast decision-making.</li>
+                            <li>Used visual patterns to identify high-risk transaction behavior.</li>
+                        </ul>
+                        <div class="card-tags"><span class="tag">Tableau</span><span class="tag">Python</span><span class="tag">Fraud Analysis</span></div>
+                        <div class="project-actions">
+                            <a href="https://github.com/PALAK7890/credit_card_fraud_detection" target="_blank" rel="noreferrer" class="mini-btn"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-tech="SQL Tableau Python">
+                    <div class="project-img-wrap" onclick="openModal('Dashboard 2.png')">
+                        <img src="Dashboard 2.png" alt="Indian Crime Data Analysis Dashboard" />
+                    </div>
+                    <div class="project-body">
+                        <h3>Indian Crime Data Analysis</h3>
+                        <p>End-to-end analysis of crime trends across states, cities, crime categories, time periods, and arrest patterns.</p>
+                        <ul class="impact-list">
+                            <li>Cleaned and structured raw crime data for analysis.</li>
+                            <li>Built dashboards to reveal regional and temporal crime trends.</li>
+                        </ul>
+                        <div class="card-tags"><span class="tag">SQL</span><span class="tag">Tableau</span><span class="tag">Python</span></div>
+                        <div class="project-actions">
+                            <a href="https://github.com/PALAK7890/Indian_Crime" target="_blank" rel="noreferrer" class="mini-btn"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-tech="Excel">
+                    <div class="project-img-wrap" onclick="openModal('sheet.png')">
+                        <img src="sheet.png" alt="Developer Compensation Excel Dashboard" />
+                    </div>
+                    <div class="project-body">
+                        <h3>Developer Compensation Analysis</h3>
+                        <p>Excel dashboard analyzing compensation, experience, job satisfaction, country, industry, and organization structure.</p>
+                        <ul class="impact-list">
+                            <li>Created pivot-based KPIs and salary comparisons.</li>
+                            <li>Connected compensation patterns with developer satisfaction.</li>
+                        </ul>
+                        <div class="card-tags"><span class="tag">Excel</span><span class="tag">Dashboard</span><span class="tag">Group Project</span></div>
+                        <div class="project-actions">
+                            <a href="https://github.com/adithyanst/SectionA_Group19_DevComp_and_JobSatisfaction" target="_blank" rel="noreferrer" class="mini-btn"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-tech="Tableau Python Excel">
+                    <div class="project-img-wrap" onclick="openModal('Dashboard 1.png')">
+                        <img src="Dashboard 1.png" alt="Engineering College Placement Analysis Dashboard" />
+                    </div>
+                    <div class="project-body">
+                        <h3>Engineering College Placement Analysis</h3>
+                        <p>Placement analytics project exploring recruiters, college tiers, salary outcomes, and student performance signals.</p>
+                        <ul class="impact-list">
+                            <li>Built placement-focused KPIs and comparisons.</li>
+                            <li>Analyzed salary outcomes across performance and college factors.</li>
+                        </ul>
+                        <div class="card-tags"><span class="tag">Tableau</span><span class="tag">Python</span><span class="tag">Excel</span></div>
+                        <div class="project-actions">
+                            <a href="https://github.com/PALAK7890/college-placements" target="_blank" rel="noreferrer" class="mini-btn"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-tech="Python Tableau">
+                    <div class="project-img-wrap" onclick="openModal('ab_testing.png')">
+                        <img src="ab_testing.png" alt="Marketing A/B Testing Dashboard" />
+                    </div>
+                    <div class="project-body">
+                        <h3>Marketing A/B Testing, ROI & Budget Optimization</h3>
+                        <p>Marketing analytics case study using statistical testing, ROI dashboards, and budget allocation strategy.</p>
+                        <ul class="impact-list">
+                            <li>Applied z-test, confidence intervals, and effect size analysis.</li>
+                            <li>Built a ₹50,000 budget optimization recommendation.</li>
+                        </ul>
+                        <div class="card-tags"><span class="tag">Python</span><span class="tag">Tableau</span><span class="tag">A/B Testing</span></div>
+                        <div class="project-actions">
+                            <a href="https://github.com/PALAK7890/ab_testing" target="_blank" rel="noreferrer" class="mini-btn"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-tech="Python Tableau">
+                    <div class="project-img-wrap" onclick="openModal('time_value.png')">
+                        <img src="time_value.png" alt="Time Value Analysis Dashboard" />
+                    </div>
+                    <div class="project-body">
+                        <h3>Time Value Analysis</h3>
+                        <p>Analytical project exploring how value changes across time using statistics, visualization, and dashboard insights.</p>
+                        <ul class="impact-list">
+                            <li>Built trend-focused visuals to interpret value movement over time.</li>
+                            <li>Converted statistical findings into decision-ready insights.</li>
+                        </ul>
+                        <div class="card-tags"><span class="tag">Python</span><span class="tag">Tableau</span><span class="tag">EDA</span></div>
+                        <div class="project-actions">
+                            <a href="https://github.com/PALAK7890/Time_value" target="_blank" rel="noreferrer" class="mini-btn"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <div class="section-header">
+                <div>
+                    <div class="section-kicker">Skills</div>
+                    <h2>Technical toolkit</h2>
+                </div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-box"><h3>Data Analysis</h3><p>EDA, KPI design, segmentation, trend analysis, business insights.</p></div>
+                <div class="skill-box"><h3>Python</h3><p>Pandas, NumPy, Matplotlib, Seaborn, data cleaning, analysis notebooks.</p></div>
+                <div class="skill-box"><h3>SQL</h3><p>Filtering, joins, aggregation, data querying, analytical summaries.</p></div>
+                <div class="skill-box"><h3>Visualization</h3><p>Tableau dashboards, Excel dashboards, charts, storytelling layouts.</p></div>
+                <div class="skill-box"><h3>Statistics</h3><p>A/B testing, z-test, confidence intervals, effect size, correlation.</p></div>
+            </div>
+        </section>
+
+        <section class="section" id="experience">
+            <div class="section-header">
+                <div>
+                    <div class="section-kicker">Experience</div>
+                    <h2>What I bring to teams</h2>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-card">
+                    <div class="topline">
+                        <h3>Data Analytics Project Builder</h3>
+                        <span class="date">Portfolio Experience</span>
+                    </div>
+                    <p>Built end-to-end analytics projects across marketing, fraud, crime, compensation, education, placement, and product-style business problems.</p>
+                    <ul>
+                        <li>Cleaned raw datasets, engineered useful metrics, and designed dashboards for decision-making.</li>
+                        <li>Presented insights through concise business narratives, KPIs, and visual analysis.</li>
+                    </ul>
+                </div>
+                <div class="timeline-card">
+                    <div class="topline">
+                        <h3>B.Tech Data Science Student</h3>
+                        <span class="date">Newton School of Technology × Rishihood University</span>
+                    </div>
+                    <p>Studying data science fundamentals while applying Python, SQL, Excel, Tableau, and machine learning to real-world datasets.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <div class="section-header">
+                <div>
+                    <div class="section-kicker">Contact</div>
+                    <h2>Let’s work together</h2>
+                    <p class="section-desc">Open to data analyst, business analyst, and data science internship opportunities.</p>
+                </div>
+            </div>
+            <div class="contact-grid">
+                <a class="contact-card" href="mailto:dahiyapalak7@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                    <strong>Email</strong>
+                    <span>dahiyapalak7@gmail.com</span>
+                </a>
+                <a class="contact-card" href="https://www.linkedin.com/in/palak-b2a36b324/" target="_blank" rel="noreferrer">
+                    <i class="fab fa-linkedin"></i>
+                    <strong>LinkedIn</strong>
+                    <span>Connect with me</span>
+                </a>
+                <a class="contact-card" href="https://www.kaggle.com/palakdahiya" target="_blank" rel="noreferrer">
+                    <i class="fab fa-kaggle"></i>
+                    <strong>Kaggle</strong>
+                    <span>View notebooks</span>
+                </a>
+                <a class="contact-card" href="#projects">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <strong>Portfolio</strong>
+                    <span>View case studies</span>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            © 2026 Palak. Built as a resume-style Data Analyst portfolio.
+        </footer>
+    </main>
+
+    <div class="modal" id="modal" onclick="closeModal()" aria-hidden="true">
+        <button class="modal-close" type="button" aria-label="Close preview" onclick="closeModal(event)"><i class="fa-solid fa-xmark"></i></button>
+        <img id="modal-img" src="" alt="Project preview" />
+    </div>
+
+    <script>
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const selected = button.dataset.filter;
+
+                filterButtons.forEach((btn) => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                projectCards.forEach((card) => {
+                    const tech = card.dataset.tech || '';
+                    const shouldShow = selected === 'all' || tech.includes(selected);
+                    card.style.display = shouldShow ? 'block' : 'none';
+                });
+            });
+        });
+
+        function openModal(imageSrc) {
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = imageSrc;
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeModal(event) {
+            if (event) event.stopPropagation();
+            const modal = document.getElementById('modal');
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
