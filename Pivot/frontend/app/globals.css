@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #0a0b14;
+  --foreground: #e2e8f0;
+  --sidebar-bg: #070811;
+  --card-bg: #0f1120;
+  --card-border: #1e2340;
+  --accent: #7c3aed;
+  --accent-light: #a78bfa;
+  --accent-glow: rgba(124, 58, 237, 0.25);
+  --green: #10b981;
+  --yellow: #f59e0b;
+  --red: #ef4444;
+  --blue: #3b82f6;
+  --muted: #4b5563;
+  --muted-fg: #9ca3af;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Inter, system-ui, sans-serif;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2d3748; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #4a5568; }
+
+/* Utility classes used across components */
+.glass {
+  background: rgba(15, 17, 32, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animate fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Pulse dot animation */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.pulse-dot { animation: pulse-dot 1.5s ease-in-out infinite; }

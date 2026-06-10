@@ -1,0 +1,40 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import { Sidebar } from "@/components/Sidebar";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "PatternPilot AI — DSA Pattern Mentor",
+  description:
+    "Master DSA patterns with an AI mentor, not memorized solutions. Analyze problems, get progressive hints, review code, and track your progress.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex" style={{ background: "var(--background)" }}>
+        <Sidebar />
+        <main className="flex-1 min-h-screen overflow-y-auto">
+          {children}
+        </main>
+      </body>
+    </html>
+  );
+}
